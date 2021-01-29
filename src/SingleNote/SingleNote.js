@@ -15,6 +15,7 @@ class SingleNote extends React.Component {
         </header>
         <main>
           <h2>{singleNote.name}</h2>
+          <p>{singleNote.content}</p>
         </main>
         <section>
 
