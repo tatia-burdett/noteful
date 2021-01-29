@@ -1,29 +1,35 @@
 import React from 'react';
-import { Route, Link } from 'react-router-dom'
+import { Route, Link, Switch } from 'react-router-dom'
 import Folders from './Folders/Folders'
 import Notes from './Notes/Notes'
-import data from './dummy-store'
+import SingleNote from './SingleNote/SingleNote'
+import Main from './Main/Main'
+import DATA from './dummy-store'
 import './App.css'
 
 class App extends React.Component {
   constructor(props) {
     super(props)
-    this.setState = {
-      data: data
+    this.state = {
+      data: DATA
     }
   }
 
   render() {
+    const {data} = this.state
     return (
       <div className='App'>
         <header>
           <Link to='/'><h1>Noteful</h1></Link>
         </header>
         <main>
-          <Notes />
+          <Switch>
+            <Route exact path='/' component={Main}/>
+            <Route path='/single-note' component={SingleNote}/>
+          </Switch>
         </main>
         <section>
-          <Folders />
+          <Route path='folders' component={Folders}/>
         </section>
       </div>
     );

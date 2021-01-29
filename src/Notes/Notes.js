@@ -10,7 +10,7 @@ class Notes extends React.Component {
           <Link to='/'><h1>Noteful</h1></Link>
         </header>
         <main>
-
+          
         </main>
         <section>
           
