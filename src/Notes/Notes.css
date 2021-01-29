@@ -1,0 +1,14 @@
+h2 {
+  margin: 0;
+}
+
+.notes_list ul li {
+  list-style-type: none;
+  margin: 0;
+  width: 300px;
+  padding: 10px;
+}
+
+.notes_list ul li a {
+  text-decoration: none;
+}

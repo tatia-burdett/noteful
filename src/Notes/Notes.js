@@ -10,7 +10,7 @@ class Notes extends React.Component {
           {this.props.notes.map(note => 
             <li key={note.id}>
               <Link to={`/note/${note.id}`}>
-                {note.name}
+                <h2>{note.name}</h2>
               </Link>
               {/* add modified date and remove button */}
             </li>
