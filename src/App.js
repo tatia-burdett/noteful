@@ -22,13 +22,13 @@ class App extends React.Component {
         <header>
           <Link to='/' className='header_link'><h1>Noteful</h1></Link>
         </header>
-        <main>
+        <main class='note_list'>
           <Switch>
             <Route exact path='/' component={Main}/>
             <Route path='/single-note' component={SingleNote}/>
           </Switch>
         </main>
-        <section>
+        <section class='sidebar'>
           <Route path='folders' component={Folders}/>
         </section>
       </div>
