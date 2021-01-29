@@ -1,7 +1,5 @@
 import React from 'react';
-import { Route, Link, Switch } from 'react-router-dom'
-import Folders from './Folders/Folders'
-import Notes from './Notes/Notes'
+import { Route } from 'react-router-dom'
 import SingleNote from './SingleNote/SingleNote'
 import Main from './Main/Main'
 import DATA from './dummy-store'
@@ -19,18 +17,15 @@ class App extends React.Component {
     const {data} = this.state
     return (
       <div className='App'>
-        <header>
-          <Link to='/' className='header_link'><h1>Noteful</h1></Link>
-        </header>
-        <main className='note_list'>
-          <Switch>
-            <Route exact path='/' component={Main}/>
-            <Route path='/single-note' component={SingleNote}/>
-          </Switch>
-        </main>
-        <section className='sidebar'>
-          
-        </section>
+        <div className='note_list'>
+          <Route path='/single-note' component={SingleNote}/>
+          <Route exact path='/' render={() => 
+            <Main 
+              folders={data.folders}
+              notes={data.notes}
+            />}
+          />
+        </div>
       </div>
     );
   }

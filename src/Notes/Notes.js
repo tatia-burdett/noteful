@@ -1,5 +1,5 @@
 import React from 'react'
-import { Route, Link } from 'react-router-dom'
+import { Link } from 'react-router-dom'
 import './Notes.css'
 
 class Notes extends React.Component {
@@ -7,9 +7,12 @@ class Notes extends React.Component {
     return (
       <div>
         <ul>
-          <li>Example 1 </li>
-          <li>Example 2 </li>
-          <li>Example 3 </li>
+          {this.props.notes.map(note => 
+            <li key={note.id}>
+              <Link to={`/note/${note.id}`}>
+                {note.name}
+              </Link>
+            </li>)}
         </ul>
       </div>
     )
