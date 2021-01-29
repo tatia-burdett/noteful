@@ -6,15 +6,11 @@ class Notes extends React.Component {
   render() {
     return (
       <div>
-        <header>
-          <Link to='/'><h1>Noteful</h1></Link>
-        </header>
-        <main>
-          
-        </main>
-        <section>
-          
-        </section>
+        <ul>
+          <li>Example 1 </li>
+          <li>Example 2 </li>
+          <li>Example 3 </li>
+        </ul>
       </div>
     )
   }

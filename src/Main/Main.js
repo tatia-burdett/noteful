@@ -13,7 +13,7 @@ class App extends React.Component {
     
         </header>
         <main className='notes_list'>
-          
+          <Notes />
         </main>
         <section className='folders_list'>
 
