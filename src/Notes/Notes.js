@@ -5,7 +5,7 @@ import './Notes.css'
 class Notes extends React.Component {
   render() {
     return (
-      <div>
+      <div className='notes_list'>
         <ul>
           {this.props.notes.map(note => 
             <li key={note.id}>

@@ -1,14 +1,14 @@
-.display_area {
+.main_display_area {
   display: flex;
   flex-direction: row-reverse;
   justify-content: flex-end;
 }
 
-.notes_list {
+.main_notes_list {
   flex-grow: 3;
 }
 
-.folders_list {
+.main_folders_list {
   flex-grow: 2;
   display: flex;
   justify-content: center;

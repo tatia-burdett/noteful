@@ -17,7 +17,7 @@ class App extends React.Component {
     const {data} = this.state
     return (
       <div className='App'>
-        <div className='note_list'>
+        <div>
 
           <Route path='/note/:noteId' render={(props) =>
             <SingleNote
