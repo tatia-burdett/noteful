@@ -20,7 +20,7 @@ class App extends React.Component {
     return (
       <div className='App'>
         <header>
-          <Link to='/'><h1>Noteful</h1></Link>
+          <Link to='/' className='header_link'><h1>Noteful</h1></Link>
         </header>
         <main>
           <Switch>
