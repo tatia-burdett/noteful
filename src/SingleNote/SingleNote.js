@@ -18,7 +18,7 @@ class SingleNote extends React.Component {
           <p>{singleNote.content}</p>
         </main>
         <section>
-
+          {/* add side bar and back button */}
         </section>
       </div>
     )

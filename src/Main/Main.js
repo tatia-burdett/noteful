@@ -12,13 +12,16 @@ class App extends React.Component {
         <header>
           <Link to='/' className='header_link'><h1>Noteful</h1></Link>
         </header>
+
         <div className='display_area'>
           <main className='notes_list'>
             <Notes 
               notes={this.props.notes}
             />
           </main>
-          <section className='folders_list'>
+
+          {/* Need to make folder section dynamic with Route */}
+          <section className='folders_list'> 
             <Folders 
               folders={this.props.folders}
             />

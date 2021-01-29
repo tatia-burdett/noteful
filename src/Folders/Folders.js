@@ -11,6 +11,7 @@ class Folders extends React.Component {
           <li key={folder.id}>
             {folder.name}
           </li>)}
+          {/* Have folders filter notes display -- not sure how to do this */}
        </ul>
       </div>
     )

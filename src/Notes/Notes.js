@@ -12,6 +12,7 @@ class Notes extends React.Component {
               <Link to={`/note/${note.id}`}>
                 {note.name}
               </Link>
+              {/* add modified date and remove button */}
             </li>
           )}
         </ul>
