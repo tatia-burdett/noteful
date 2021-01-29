@@ -12,12 +12,14 @@ class App extends React.Component {
         <header>
     
         </header>
-        <main className='notes_list'>
-          <Notes />
-        </main>
-        <section className='folders_list'>
-          <Folders />
-        </section>
+        <div className='display_area'>
+          <main className='notes_list'>
+            <Notes />
+          </main>
+          <section className='folders_list'>
+            <Folders />
+          </section>
+        </div>
       </div>
     );
   }

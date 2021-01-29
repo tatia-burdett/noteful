@@ -29,7 +29,7 @@ class App extends React.Component {
           </Switch>
         </main>
         <section className='sidebar'>
-          <Route path='folders' component={Folders}/>
+          
         </section>
       </div>
     );

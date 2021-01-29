@@ -1,0 +1,15 @@
+.display_area {
+  display: flex;
+  flex-direction: row-reverse;
+  justify-content: flex-end;
+}
+
+.notes_list {
+  flex-grow: 3;
+}
+
+.folders_list {
+  flex-grow: 2;
+  display: flex;
+  justify-content: center;
+}
