@@ -1,5 +1,5 @@
 import React from 'react'
-import { Route, Link } from 'react-router-dom'
+import { Link } from 'react-router-dom'
 import './Folders.css'
 
 class Folders extends React.Component {
@@ -7,9 +7,10 @@ class Folders extends React.Component {
     return (
       <div>
        <ul>
-         <li>Folder 1</li>
-         <li>Folder 2</li>
-         <li>Folder 3</li>
+         {this.props.folders.map(folder => 
+          <li key={folder.id}>
+            {folder.name}
+          </li>)}
        </ul>
       </div>
     )

@@ -19,7 +19,9 @@ class App extends React.Component {
             />
           </main>
           <section className='folders_list'>
-            <Folders />
+            <Folders 
+              folders={this.props.folders}
+            />
           </section>
         </div>
       </div>
