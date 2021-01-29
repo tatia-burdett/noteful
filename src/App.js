@@ -18,7 +18,12 @@ class App extends React.Component {
     return (
       <div className='App'>
         <div className='note_list'>
-          <Route path='/single-note' component={SingleNote}/>
+          <Route path='/note/:noteId' render={(props) =>
+            <SingleNote
+              notes={data.notes} 
+              {...props}
+              />}
+          />
           <Route exact path='/' render={() => 
             <Main 
               folders={data.folders}

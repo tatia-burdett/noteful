@@ -12,7 +12,8 @@ class Notes extends React.Component {
               <Link to={`/note/${note.id}`}>
                 {note.name}
               </Link>
-            </li>)}
+            </li>
+          )}
         </ul>
       </div>
     )
