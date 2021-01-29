@@ -8,7 +8,7 @@ class App extends React.Component {
 
   render() {
     return (
-      <div className='App'>
+      <div className='main'>
         <header>
     
         </header>
@@ -16,7 +16,7 @@ class App extends React.Component {
           <Notes />
         </main>
         <section className='folders_list'>
-
+          <Folders />
         </section>
       </div>
     );

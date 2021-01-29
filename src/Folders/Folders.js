@@ -6,15 +6,11 @@ class Folders extends React.Component {
   render() {
     return (
       <div>
-        <header>
-          <Link to='/'><h1>Noteful</h1></Link>
-        </header>
-        <main>
-
-        </main>
-        <section>
-          
-        </section>
+       <ul>
+         <li>Folder 1</li>
+         <li>Folder 2</li>
+         <li>Folder 3</li>
+       </ul>
       </div>
     )
   }
