@@ -1,111 +1,103 @@
 import React from 'react';
 import { Route, Link } from 'react-router-dom'
-import SingleNote from './SingleNote/SingleNote'
-import Main from './Main/Main'
+import MainNoteList from './MainNoteList/MainNoteList' // Main section, list of all notes
+import FolderList from './FolderList/FolderList' // Folder section, list of all folders
+import MainNote from './MainNote/MainNote' // Main section, single note selected
+import FolderNote from './FolderNote/FolderNote' // Folder section when single note selected
 import DATA from './dummy-store'
-import Folders from './Folders/Folders'
-import FoldersList from './FoldersList/FoldersList'
 import './App.css'
 
 class App extends React.Component {
   constructor(props) {
     super(props)
     this.state = {
-      data: DATA
+      notes: [],
+      folders: []
     }
   }
 
-  renderFolders() {
-    const { data } = this.state
-    return(
+  componentDidMount() {
+    this.setState(DATA)
+  }
+
+  renderFolderRoutes() {
+    const findFolder = (folders=[], folderId) =>
+      folders.find(folder => folder.id === folderId)
+
+    const findNote = (notes=[], noteId) =>
+      notes.find(note => note.id === noteId)
+
+    const { notes, folders } = this.state
+    return (
       <>
         {['/', '/folder/:folderId'].map(path => (
-          <Route 
+          <Route
             exact
             key={path}
-            path={path}
-            render={routeProps => (
-              <Folders 
-                folders={data.folders}
-                notes={data.notes}
-                {...routeProps}
+            render={props => (
+              <FolderList 
+                folders={folders}
+                notes={notes}
+                {...props}
               />
-            )} 
+            )}
           />
         ))}
         <Route 
           path='/note/:noteId'
-          render={routeProps => {
-            const {noteId} = routeProps.match.params
-            const note = findNote(data.notes, noteId) || {}
-            const folder = findFolder(data.folders, note.folderId)
-            return <SingleNote {...routeProps} folder={folder} 
-        />
+          render={props => {
+            const {noteId} = props.match.params
+            const note = findNote(notes, noteId) || {}
+            const folder = findFolder(folders, note.folderId)
+            return <FolderNote {...props} folder={folder}/>
           }}
+        />
       </>
     )
   }
 
-  renderMain() {
-    const getFolderNotes = (notes=[], folderId) => {
-      return (!folderId)
+  renderNoteRoutes() {
+    const getFolderNotes = (notes=[], folderId) => (
+      (!folderId)
         ? notes
-        : notes.filter(note => note.folderId === folderId)
-    }
+        : notes.filter(note => note.folderId === folderId))
+        
+    const findNote = (notes=[], noteId) =>
+      notes.find(note => note.id === noteId)
 
-    const { data } = this.state
+    const { notes, folders } = this.state
     return (
       <>
-      {['/', '/folders/:folderId'].map(path => (
+        {['/', 'folder/:folderId'].map(path => (
+          <Route 
+            key={path}
+            path={path}
+            render={props => {
+              const {folderId} = props.match.params
+              const folderNotes = getFolderNotes(
+                notes,
+                folderId
+              )
+              return (
+                <MainNoteList 
+                  {...props}
+                  notes={folderNotes}
+                />
+              )
+            }}
+          />
+        ))}
         <Route 
-          exact
-          key={path}
-          path={path}
-          render={routeProps => {
-            const {folderId} = routeProps.match.params
-            const folderNotes = getFolderNotes(
-              data.notes,
-              folderId
-            )
-            return (
-              <FoldersList 
-                {...routeProps}
-                notes={folderNotes}
-              />
-            ) 
+          path='/note/:noteId'
+          render={props => {
+            const {noteId} = props.match.params
+            const note = findNote(notes, noteId)
+            return <MainNote {...props} note={note}/>
           }}
-        />
-      ))}
-        <Route path='/note/:noteId' render={(props) =>
-          <SingleNote
-            notes={data.notes} 
-            {...props} />} // WHY does this work??? 
         />
       </>
     )
   }
-
-  // renderMain() {
-  //   const { data } = this.state
-  //   return (
-  //     <Route exact path='/' render={() => 
-  //       <Main 
-  //         folders={data.folders}
-  //         notes={data.notes} />}
-  //     />
-  //   )
-  // }
-
-  // renderNote() {
-  //   const { data } = this.state
-  //   return (
-  //     <Route path='/note/:noteId' render={(props) =>
-  //       <SingleNote
-  //         notes={data.notes} 
-  //         {...props} />} // WHY does this work??? 
-  //     />
-  //   )
-  // }
 
   render() {
     return (
@@ -113,13 +105,11 @@ class App extends React.Component {
         <header>
           <Link to='/'><h1>Noteful</h1></Link>
         </header>
-        <nav className='app_nav'>
-
+        <nav className='App_nav'>
+          {this.renderFolderRoutes()}
         </nav>
-        <main>
-          {this.renderMain}
-            {/* {this.renderMain()} */}
-            {/* {this.renderNote()} */}
+        <main className='App_main'>
+          {this.renderNoteRoutes()}
         </main>
       </div>
     );
