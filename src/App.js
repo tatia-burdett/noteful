@@ -1,5 +1,5 @@
 import React from 'react';
-import { Route } from 'react-router-dom'
+import { Route, Link } from 'react-router-dom'
 import SingleNote from './SingleNote/SingleNote'
 import Main from './Main/Main'
 import DATA from './dummy-store'
@@ -13,25 +13,40 @@ class App extends React.Component {
     }
   }
 
+  renderFolders() {
+    const { data } = this.state
+    return (
+      <Route exact path='/' render={() => 
+        <Main 
+          folders={data.folders}
+          notes={data.notes} />}
+      />
+    )
+  }
+
+  renderNotes() {
+    const { data } = this.state
+    return (
+      <Route path='/note/:noteId' render={(props) =>
+        <SingleNote
+          notes={data.notes} 
+          {...props} />} // WHY does this work??? 
+      />
+    )
+  }
+
   render() {
-    const {data} = this.state
     return (
       <div className='App'>
-        <div>
-
-          <Route path='/note/:noteId' render={(props) =>
-            <SingleNote
-              notes={data.notes} 
-              {...props} />} // WHY does this work??? 
-          />
-
-          <Route exact path='/' render={() => 
-            <Main 
-              folders={data.folders}
-              notes={data.notes} />}
-          />
-
-        </div>
+        <header>
+          <Link to='/'><h1>Noteful</h1></Link>
+        </header>
+        <nav className='app_nav'>
+          {this.renderFolders()}
+        </nav>
+        <main>
+            {this.renderNotes()}
+        </main>
       </div>
     );
   }
