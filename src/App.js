@@ -34,22 +34,23 @@ class App extends React.Component {
           <Route
             exact
             key={path}
-            render={props => (
+            path={path}
+            render={routeProps => (
               <FolderList 
                 folders={folders}
                 notes={notes}
-                {...props}
+                {...routeProps}
               />
             )}
           />
         ))}
         <Route 
           path='/note/:noteId'
-          render={props => {
-            const {noteId} = props.match.params
+          render={routeProps => {
+            const {noteId} = routeProps.match.params
             const note = findNote(notes, noteId) || {}
             const folder = findFolder(folders, note.folderId)
-            return <FolderNote {...props} folder={folder}/>
+            return <FolderNote {...routeProps} folder={folder}/>
           }}
         />
       </>
@@ -61,7 +62,7 @@ class App extends React.Component {
       (!folderId)
         ? notes
         : notes.filter(note => note.folderId === folderId))
-        
+
     const findNote = (notes=[], noteId) =>
       notes.find(note => note.id === noteId)
 
@@ -70,17 +71,19 @@ class App extends React.Component {
       <>
         {['/', 'folder/:folderId'].map(path => (
           <Route 
+            exact
             key={path}
             path={path}
-            render={props => {
-              const {folderId} = props.match.params
+            render={routeProps => {
+              const {folderId} = routeProps.match.params
               const folderNotes = getFolderNotes(
                 notes,
                 folderId
               )
+              console.log(routeProps.match.params)
               return (
                 <MainNoteList 
-                  {...props}
+                  {...routeProps}
                   notes={folderNotes}
                 />
               )
@@ -89,10 +92,10 @@ class App extends React.Component {
         ))}
         <Route 
           path='/note/:noteId'
-          render={props => {
-            const {noteId} = props.match.params
+          render={routeProps => {
+            const {noteId} = routeProps.match.params
             const note = findNote(notes, noteId)
-            return <MainNote {...props} note={note}/>
+            return <MainNote {...routeProps} note={note}/>
           }}
         />
       </>

@@ -19,4 +19,8 @@ class MainNoteList extends React.Component {
   }
 }
 
+MainNoteList.defaultProps = {
+  notes: []
+}
+
 export default MainNoteList
