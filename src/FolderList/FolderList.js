@@ -8,13 +8,13 @@ class FolderList extends React.Component {
       notes.filter(note => note.folderId === folderId).length
     
     return (
-      <div>
+      <div className='Folder_list'>
         <ul>
           {this.props.folders.map(folder => 
-            <li key={folder.id}>
+            <li key={folder.id} className='Folder_list_item'>
               <NavLink to={`/folder/${folder.id}`}>
-              {folder.name}
-              </NavLink>
+                {folder.name}
+                </NavLink>
               <div>{countNotesForFolder(this.props.notes, folder.id)}</div>
             </li>
           )}
