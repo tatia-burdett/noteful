@@ -1,5 +1,5 @@
 import React from 'react'
-import { Link } from 'react-router-dom'
+import Moment from 'react-moment'
 import './MainNote.css'
 
 class MainNote extends React.Component {
@@ -7,6 +7,7 @@ class MainNote extends React.Component {
     return (
       <section className='Main_note'>
         <h3>{this.props.note.name}</h3>
+        <Moment format='D MMM YYYY'>{this.props.note.modified}</Moment>
         <p>{this.props.note.content}</p>
       </section>
     )
