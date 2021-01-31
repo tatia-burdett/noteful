@@ -80,7 +80,6 @@ class App extends React.Component {
                 notes,
                 folderId
               )
-              console.log(folderNotes)
               return (
                 <MainNoteList 
                   {...routeProps}
