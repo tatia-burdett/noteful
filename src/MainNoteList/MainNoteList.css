@@ -1,0 +1,22 @@
+.Main_note_list {
+}
+
+.Main_list_item {
+  background-color:#fcf9f0;
+  list-style-type: none;
+  padding: 10px;
+  border: 1px solid #777;
+  border-radius: 5px;
+  box-shadow: 0 7px 3px -3px #777;
+  width: 400px;
+  margin: 10px;
+}
+
+.Main_list_item a {
+  text-decoration: none;
+  color: black;
+}
+
+.Main_list_item a h3 {
+  margin: 0;
+}

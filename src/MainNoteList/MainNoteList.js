@@ -5,12 +5,12 @@ import './MainNoteList.css'
 class MainNoteList extends React.Component {
   render() {
     return(
-      <section>
+      <section className='Main_note_list'>
         <ul>
           {this.props.notes.map(note => 
-            <li key={note.id}>
+            <li key={note.id} className='Main_list_item'>
               <Link to={`/note/${note.id}`}>
-                {note.name}
+                <h3>{note.name}</h3>
               </Link>
             </li>
           )}
