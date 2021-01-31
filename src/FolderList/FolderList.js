@@ -1,5 +1,6 @@
 import React from 'react'
 import { NavLink, Link } from 'react-router-dom'
+import './FolderList.css'
 
 class FolderList extends React.Component {
   render() {
@@ -12,9 +13,9 @@ class FolderList extends React.Component {
           {this.props.folders.map(folder => 
             <li key={folder.id}>
               <NavLink to={`/folder/${folder.id}`}>
-          <span>{countNotesForFolder(this.props.notes, folder.id)}</span>
               {folder.name}
               </NavLink>
+              <div>{countNotesForFolder(this.props.notes, folder.id)}</div>
             </li>
           )}
         </ul>

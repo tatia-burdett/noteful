@@ -1,4 +1,5 @@
 import React from 'react'
+import './FolderNote.css'
 
 class FolderNote extends React.Component {
   render() {

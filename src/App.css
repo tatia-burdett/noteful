@@ -7,3 +7,16 @@ h1 {
   text-align: center;
 }
 
+.App_sections {
+  display: flex;
+}
+
+.App_nav {
+  flex: 2;
+  text-align: right;
+}
+
+.App_main {
+  flex: 4;
+}
+

@@ -69,18 +69,18 @@ class App extends React.Component {
     const { notes, folders } = this.state
     return (
       <>
-        {['/', 'folder/:folderId'].map(path => (
+        {['/', '/folder/:folderId'].map(path => (
           <Route 
             exact
             key={path}
             path={path}
             render={routeProps => {
-              const {folderId} = routeProps.match.params
+            const {folderId} = routeProps.match.params
               const folderNotes = getFolderNotes(
                 notes,
                 folderId
               )
-              console.log(routeProps.match.params)
+              console.log(folderNotes)
               return (
                 <MainNoteList 
                   {...routeProps}
@@ -108,12 +108,14 @@ class App extends React.Component {
         <header>
           <Link to='/'><h1>Noteful</h1></Link>
         </header>
-        <nav className='App_nav'>
-          {this.renderFolderRoutes()}
-        </nav>
-        <main className='App_main'>
-          {this.renderNoteRoutes()}
-        </main>
+        <div className='App_sections'>
+          <nav className='App_nav'>
+            {this.renderFolderRoutes()}
+          </nav>
+          <main className='App_main'>
+            {this.renderNoteRoutes()}
+          </main>
+        </div>
       </div>
     );
   }
