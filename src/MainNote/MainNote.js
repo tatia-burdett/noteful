@@ -5,7 +5,7 @@ import './MainNote.css'
 class MainNote extends React.Component {
   render() {
     return (
-      <section>
+      <section className='Main_note'>
         <h3>{this.props.note.name}</h3>
         <p>{this.props.note.content}</p>
       </section>
