@@ -1,0 +1,9 @@
+.Folder_note {
+  height: 100vh;
+  padding: 10px;
+}
+
+.Folder_note h3 {
+  padding-bottom: 10px;
+  border-bottom: 1px solid darkslategrey;
+}

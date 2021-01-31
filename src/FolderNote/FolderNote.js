@@ -4,7 +4,7 @@ import './FolderNote.css'
 class FolderNote extends React.Component {
   render() {
     return ( 
-      <div>
+      <div className='Folder_note'>
         {this.props.folder && (
           <h3>{this.props.folder.name}</h3>
         )}
