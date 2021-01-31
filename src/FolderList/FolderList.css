@@ -15,6 +15,11 @@
   text-decoration: none;
 }
 
+.Folder_list_item a:hover {
+  cursor: pointer;
+  color: #444;
+}
+
 .Folder_note_count {
   padding-left: 10px;
   font-weight: 400;
