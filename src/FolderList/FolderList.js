@@ -14,8 +14,8 @@ class FolderList extends React.Component {
             <li key={folder.id} className='Folder_list_item'>
               <NavLink to={`/folder/${folder.id}`}>
                 {folder.name}
+                <span className='Folder_note_count'>{countNotesForFolder(this.props.notes, folder.id)}</span>
                 </NavLink>
-              <div>{countNotesForFolder(this.props.notes, folder.id)}</div>
             </li>
           )}
         </ul>
