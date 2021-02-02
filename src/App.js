@@ -5,6 +5,7 @@ import FolderList from './FolderList/FolderList' // Folder section, list of all 
 import MainNote from './MainNote/MainNote' // Main section, single note selected
 import FolderNote from './FolderNote/FolderNote' // Folder section when single note selected
 import DATA from './dummy-store'
+import NotesContext from './NotesContext'
 import './App.css'
 
 class App extends React.Component {
@@ -17,7 +18,24 @@ class App extends React.Component {
   }
 
   componentDidMount() {
-    this.setState(DATA)
+    this.fetchFolders()
+    this.fetchNotes()
+  }
+
+  fetchFolders = () => {
+    fetch('http://localhost:9090/folders')
+      .then(res => res.json())
+      .then(folders => {
+        this.setState({ folders })
+      })
+  }
+
+  fetchNotes = () => {
+    fetch('http://localhost:9090/notes')
+      .then(res => res.json())
+      .then(notes => {
+        this.setState({ notes })
+      })
   }
 
   renderFolderRoutes() {
@@ -28,6 +46,12 @@ class App extends React.Component {
       notes.find(note => note.id === noteId)
 
     const { notes, folders } = this.state
+
+    // const contextValue = {
+    //   notes: this.state.notes,
+    //   folders: this.state.folders
+    // }
+
     return (
       <>
         {['/', '/folder/:folderId'].map(path => (
@@ -67,6 +91,12 @@ class App extends React.Component {
       notes.find(note => note.id === noteId)
 
     const { notes, folders } = this.state
+
+    // const contextValue = {
+    //   notes: this.state.notes,
+    //   folders: this.state.folders
+    // }
+
     return (
       <>
         {['/', '/folder/:folderId'].map(path => (
