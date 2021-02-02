@@ -71,10 +71,10 @@ class App extends React.Component {
   }
 
   renderNoteRoutes() {
-    const getFolderNotes = (notes=[], folderId) => (
-      (!folderId)
-        ? notes
-        : notes.filter(note => note.folderId === folderId))
+    // const getFolderNotes = (notes=[], folderId) => (
+    //   (!folderId)
+    //     ? notes
+    //     : notes.filter(note => note.folderId === folderId))
 
     const findNote = (notes=[], noteId) =>
       notes.find(note => note.id === noteId)
