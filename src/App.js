@@ -54,24 +54,18 @@ class App extends React.Component {
             exact
             key={path}
             path={path}
-            render={routeProps => (
-              <FolderList 
-                folders={folders}
-                notes={notes}
-                {...routeProps}
-              />
-            )}
+            component={FolderList}
           />
         ))}
-        <Route 
-          path='/note/:noteId'
-          render={routeProps => {
+        <Route path='/note/:noteId' component={FolderNote} />
+
+          {/* render={routeProps => {
             const {noteId} = routeProps.match.params
             const note = findNote(notes, noteId) || {}
             const folder = findFolder(folders, note.folderId)
             return <FolderNote {...routeProps} folder={folder}/>
           }}
-        />
+        /> */}
       </>
     )
   }
@@ -94,29 +88,11 @@ class App extends React.Component {
             exact
             key={path}
             path={path}
-            render={routeProps => {
-            const {folderId} = routeProps.match.params
-              const folderNotes = getFolderNotes(
-                notes,
-                folderId
-              )
-              return (
-                <MainNoteList 
-                  {...routeProps}
-                  notes={folderNotes}
-                />
-              )
-            }}
+            component={MainNoteList}
           />
         ))}
         <Route 
-          path='/note/:noteId'
-          render={routeProps => {
-            const {noteId} = routeProps.match.params
-            const note = findNote(notes, noteId)
-            return <MainNote {...routeProps} note={note}/>
-          }}
-        />
+          path='/note/:noteId' component={MainNote} />
       </>
     )
   }
