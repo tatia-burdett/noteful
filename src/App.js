@@ -5,6 +5,7 @@ import FolderList from './FolderList/FolderList' // Folder section, list of all 
 import MainNote from './MainNote/MainNote' // Main section, single note selected
 import FolderNote from './FolderNote/FolderNote' // Folder section when single note selected
 import NotesContext from './NotesContext'
+import config from './config'
 import './App.css'
 
 class App extends React.Component {
@@ -22,7 +23,7 @@ class App extends React.Component {
   }
 
   fetchFolders = () => {
-    fetch('http://localhost:9090/folders')
+    fetch(`${config.API_ENDPOINT}/folders`)
       .then(res => res.json())
       .then(folders => {
         this.setState({ folders })
@@ -30,7 +31,7 @@ class App extends React.Component {
   }
 
   fetchNotes = () => {
-    fetch('http://localhost:9090/notes')
+    fetch(`${config.API_ENDPOINT}/notes`)
       .then(res => res.json())
       .then(notes => {
         this.setState({ notes })
@@ -44,12 +45,7 @@ class App extends React.Component {
     const findNote = (notes=[], noteId) =>
       notes.find(note => note.id === noteId)
 
-    const { notes, folders } = this.state
-
-    // const contextValue = {
-    //   notes: this.state.notes,
-    //   folders: this.state.folders
-    // }
+    // const { notes, folders } = this.state
 
     return (
       <>
@@ -89,12 +85,7 @@ class App extends React.Component {
     const findNote = (notes=[], noteId) =>
       notes.find(note => note.id === noteId)
 
-    const { notes, folders } = this.state
-
-    // const contextValue = {
-    //   notes: this.state.notes,
-    //   folders: this.state.folders
-    // }
+    // const { notes, folders } = this.state
 
     return (
       <>
@@ -131,20 +122,26 @@ class App extends React.Component {
   }
 
   render() {
+    const value = {
+      notes: this.state.notes,
+      folders: this.state.folders,
+    }
     return (
-      <div className='App'>
-        <header>
-          <Link to='/'><h1>Noteful</h1></Link>
-        </header>
-        <div className='App_sections'>
-          <nav className='App_nav'>
-            {this.renderFolderRoutes()}
-          </nav>
-          <main className='App_main'>
-            {this.renderNoteRoutes()}
-          </main>
+      <NotesContext.Provider value={value}>
+        <div className='App'>
+          <header>
+            <Link to='/'><h1>Noteful</h1></Link>
+          </header>
+          <div className='App_sections'>
+            <nav className='App_nav'>
+              {this.renderFolderRoutes()}
+            </nav>
+            <main className='App_main'>
+              {this.renderNoteRoutes()}
+            </main>
+          </div>
         </div>
-      </div>
+      </NotesContext.Provider>
     );
   }
 }
