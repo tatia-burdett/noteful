@@ -29,6 +29,11 @@ class MainNoteList extends React.Component {
                 <h3>{note.name}</h3>
                 <Moment format='D MMM YYYY'>{note.modified}</Moment>
               </Link>
+              <div className='Main_list_del'>
+                <button>
+                  Delete
+                </button>
+              </div>
             </li>
           )}
         </ul>
