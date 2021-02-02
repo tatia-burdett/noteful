@@ -1,6 +1,8 @@
 import React from 'react'
 import { NavLink } from 'react-router-dom'
 import NotesContext from '../NotesContext'
+import { countNotesForFolder } from '../helperFunction'
+
 import './FolderList.css'
 
 
@@ -8,8 +10,8 @@ class FolderList extends React.Component {
   static contextType = NotesContext
 
   render() {
-    const countNotesForFolder = (notes=[], folderId) =>
-      notes.filter(note => note.folderId === folderId).length
+    // const countNotesForFolder = (notes=[], folderId) =>
+    //   notes.filter(note => note.folderId === folderId).length
 
     const { folders=[], notes=[] } = this.context
     
