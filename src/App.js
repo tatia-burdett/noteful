@@ -39,13 +39,6 @@ class App extends React.Component {
   }
 
   renderFolderRoutes() {
-    const findFolder = (folders=[], folderId) =>
-      folders.find(folder => folder.id === folderId)
-
-    const findNote = (notes=[], noteId) =>
-      notes.find(note => note.id === noteId)
-
-    // const { notes, folders } = this.state
 
     return (
       <>
@@ -59,27 +52,11 @@ class App extends React.Component {
         ))}
         <Route path='/note/:noteId' component={FolderNote} />
 
-          {/* render={routeProps => {
-            const {noteId} = routeProps.match.params
-            const note = findNote(notes, noteId) || {}
-            const folder = findFolder(folders, note.folderId)
-            return <FolderNote {...routeProps} folder={folder}/>
-          }}
-        /> */}
       </>
     )
   }
 
   renderNoteRoutes() {
-    // const getFolderNotes = (notes=[], folderId) => (
-    //   (!folderId)
-    //     ? notes
-    //     : notes.filter(note => note.folderId === folderId))
-
-    const findNote = (notes=[], noteId) =>
-      notes.find(note => note.id === noteId)
-
-    // const { notes, folders } = this.state
 
     return (
       <>
