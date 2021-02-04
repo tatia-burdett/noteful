@@ -18,28 +18,49 @@ class App extends React.Component {
   }
 
   componentDidMount() {
-    this.fetchFolders()
-    this.fetchNotes()
+    // this.fetchFolders().then(folders => {
+    //   console.log(folders, 'ahjdha')
+    // })
+
+    // this.fetchNotes()
+  
+    this.fetchAllData()
+  }
+
+  fetchAllData = () => {
+    Promise.all([
+      this.fetchFolders(), 
+      this.fetchNotes()
+    ])
+      .then(([folders, notes]) => {
+        this.setState({
+          folders, 
+          notes
+        })
+      })
+      .catch(error => {
+        console.log(error)
+      })
   }
 
   fetchFolders = () => {
-    fetch(`${config.API_ENDPOINT}/folders`)
+    return fetch(`${config.API_ENDPOINT}/folders`)
       .then(res => res.json())
-      .then(folders => {
-        this.setState({ folders })
-      })
+      
+      // .then(folders => {
+      //   this.setState({ folders })
+      // })
   }
 
   fetchNotes = () => {
-    fetch(`${config.API_ENDPOINT}/notes`)
+    return fetch(`${config.API_ENDPOINT}/notes`)
       .then(res => res.json())
-      .then(notes => {
-        this.setState({ notes })
-      })
+      // .then(notes => {
+      //   this.setState({ notes })
+      // })
   }
 
   renderFolderRoutes() {
-
     return (
       <>
         {['/', '/folder/:folderId'].map(path => (
@@ -50,14 +71,15 @@ class App extends React.Component {
             component={FolderList}
           />
         ))}
-        <Route path='/note/:noteId' component={FolderNote} />
-
+        {/* <Route path='/note/:noteId' component={FolderNote} /> */}
+        <Route path={'/note/:noteId'}>
+          <FolderNote />
+        </Route>
       </>
     )
   }
 
   renderNoteRoutes() {
-
     return (
       <>
         {['/', '/folder/:folderId'].map(path => (
@@ -78,6 +100,7 @@ class App extends React.Component {
     const value = {
       notes: this.state.notes,
       folders: this.state.folders,
+      fetchNotes: this.fetchAllData
     }
     return (
       <NotesContext.Provider value={value}>

@@ -5,6 +5,9 @@ import { findNote, findFolder } from '../helperFunction'
 
 class FolderNote extends React.Component {
   static defaultProps = {
+    history: {
+      goBack: () => {}
+    },
     match: {
       params: {}
     }
@@ -18,8 +21,6 @@ class FolderNote extends React.Component {
 
     const note = findNote(notes, noteId) || {}
     const folder = findFolder(folders, note.folderId)
-
-    console.log(folders)
 
     return ( 
       <div className='Folder_note'>
