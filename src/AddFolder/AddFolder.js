@@ -22,11 +22,16 @@ class AddFolder extends React.Component {
   handleSubmit(event) {
     event.preventDefault()
     const query = this.state.name.value
-    const fullUrl = `${config.API_ENDPOINT}/folders/${query}`
 
-    fetch(fullUrl, {
-      method: 'POST'
-    })
+    const requestOptions = {
+      method: 'POST',
+      headers: { 'Content-Type': 'application/json' },
+      body: JSON.stringify({
+        name: `${query}`
+      })
+  };
+
+    fetch(`${config.API_ENDPOINT}/folders/`, requestOptions)
       .then(res => res.json())
       .then(data => {
         console.log('Success: ', data)
