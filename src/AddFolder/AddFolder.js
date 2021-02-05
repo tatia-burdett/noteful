@@ -1,10 +1,26 @@
 import React from 'react'
 
 class AddFolder extends React.Component {
+  constructor(props) {
+    super(props)
+    this.state = {
+      name: {
+        value: ''
+      }
+    }
+  }
+
+  updateName(name) {
+    this.setState({
+      name: {
+        value: name
+      }
+    })
+  }
 
   handleSubmit(event) {
     event.preventDefault()
-    const name = event.target.name.value
+    const { name } = this.state
     console.log(name)
   }
 
@@ -19,6 +35,7 @@ class AddFolder extends React.Component {
             name='name'
             id='name'
             className='add_folder'
+            onChange={e => this.updateName(e.target.value)}
           />
           <button type='submit'>Add Folder</button>
         </form>
