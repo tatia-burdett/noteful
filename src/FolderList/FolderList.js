@@ -1,7 +1,8 @@
 import React from 'react'
-import { NavLink } from 'react-router-dom'
+import { NavLink, Link } from 'react-router-dom'
 import NotesContext from '../NotesContext'
 import { countNotesForFolder } from '../helperFunction'
+import AddFolder from '../AddFolder/AddFolder'
 
 import './FolderList.css'
 
@@ -27,6 +28,9 @@ class FolderList extends React.Component {
             </li>
           )}
         </ul>
+        <div className='Folder_list_add_link'>
+            <Link to={'/add-folder'}>Add Folder +</Link>
+        </div>
       </div>
     )
   }

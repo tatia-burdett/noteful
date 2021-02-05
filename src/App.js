@@ -4,6 +4,7 @@ import MainNoteList from './MainNoteList/MainNoteList' // Main section, list of 
 import FolderList from './FolderList/FolderList' // Folder section, list of all folders
 import MainNote from './MainNote/MainNote' // Main section, single note selected
 import FolderNote from './FolderNote/FolderNote' // Folder section when single note selected
+import AddFolder from './AddFolder/AddFolder' // Add Folder Page
 import NotesContext from './NotesContext'
 import config from './config'
 import './App.css'
@@ -71,10 +72,11 @@ class App extends React.Component {
             component={FolderList}
           />
         ))}
-        {/* <Route path='/note/:noteId' component={FolderNote} /> */}
-        <Route path={'/note/:noteId'}>
+        <Route path='/note/:noteId' component={FolderNote} />
+        {/* <Route path={'/note/:noteId'}>
           <FolderNote />
-        </Route>
+        </Route> */}
+        <Route path={'/add-folder'} component={AddFolder}/>
       </>
     )
   }
