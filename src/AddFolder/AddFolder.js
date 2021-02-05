@@ -1,4 +1,5 @@
 import React from 'react'
+import config from '../config'
 
 class AddFolder extends React.Component {
   constructor(props) {
@@ -20,8 +21,19 @@ class AddFolder extends React.Component {
 
   handleSubmit(event) {
     event.preventDefault()
-    const { name } = this.state
-    console.log(name)
+    const query = this.state.name.value
+    const fullUrl = `${config.API_ENDPOINT}/folders/${query}`
+
+    fetch(fullUrl, {
+      method: 'POST'
+    })
+      .then(res => res.json())
+      .then(data => {
+        console.log('Success: ', data)
+      })
+      .catch(error => {
+        console.log('Error: ', error)
+      })
   }
 
   render() {
