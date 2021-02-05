@@ -5,7 +5,10 @@ class AddFolder extends React.Component {
     return (
       <div>
         <form className='add-folder-form'>
-          <button className='add-folder-btn' type='submit'>Add Folder +</button>
+          <legend>Create a Folder</legend>
+          <label>Name</label>
+          <input></input>
+          <button>Add Folder</button>
         </form>
       </div>
     )
