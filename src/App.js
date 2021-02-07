@@ -20,12 +20,6 @@ class App extends React.Component {
   }
 
   componentDidMount() {
-    // this.fetchFolders().then(folders => {
-    //   console.log(folders, 'ahjdha')
-    // })
-
-    // this.fetchNotes()
-  
     this.fetchAllData()
   }
 
@@ -48,18 +42,11 @@ class App extends React.Component {
   fetchFolders = () => {
     return fetch(`${config.API_ENDPOINT}/folders`)
       .then(res => res.json())
-      
-      // .then(folders => {
-      //   this.setState({ folders })
-      // })
   }
 
   fetchNotes = () => {
     return fetch(`${config.API_ENDPOINT}/notes`)
       .then(res => res.json())
-      // .then(notes => {
-      //   this.setState({ notes })
-      // })
   }
 
   renderFolderRoutes() {
@@ -74,9 +61,6 @@ class App extends React.Component {
           />
         ))}
         <Route path='/note/:noteId' component={FolderNote} />
-        {/* <Route path={'/note/:noteId'}>
-          <FolderNote />
-        </Route> */}
         <Route path='/add-folder' component={AddFolder}/>
       </>
     )

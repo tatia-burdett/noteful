@@ -49,13 +49,15 @@ class AddNote extends React.Component {
     const name = this.state.name.value
     const content = this.state.content.value
     const folder = this.state.folder.value
-    const query = `${name} ${content} ${folder}`
+    // const query = `${name} ${content} ${folder}`
 
     const requestOptions = {
       method: 'POST',
       headers: { 'Content-Type': 'application/json' },
       body: JSON.stringify({
-        name: `${query}`
+        name: `${name}`,
+        content: `${content}`,
+        folder: `${folder}`
       })
     };
 
@@ -71,7 +73,7 @@ class AddNote extends React.Component {
 
   render() {
     const options = this.context.folders.map((folder, i) => {
-      return <option value={folder.name} key={i}>{folder.name}</option>
+      return <option value={folder.id} key={i}>{folder.name}</option>
     })
 
     return (
