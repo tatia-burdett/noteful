@@ -11,9 +11,12 @@ class AddNote extends React.Component {
         },
         content: {
           value: ''
+        },
+        folder: {
+          value: ''
+        }  
       }
     }
-  }
 
   static contextType = NotesContext
 
@@ -33,11 +36,20 @@ class AddNote extends React.Component {
     })
   }
 
+  updateFolder(folder) {
+    this.setState({
+      folder: {
+        value: folder
+      }
+    })
+  }
+
   handleSubmit(event) {
     event.preventDefault() 
     const name = this.state.name.value
     const content = this.state.content.value
-    const query = `${name} ${content}`
+    const folder = this.state.folder.value
+    const query = `${name} ${content} ${folder}`
 
     const requestOptions = {
       method: 'POST',
@@ -58,12 +70,9 @@ class AddNote extends React.Component {
   }
 
   render() {
-    // console.log(this.context.folders)
     const options = this.context.folders.map((folder, i) => {
       return <option value={folder.name} key={i}>{folder.name}</option>
     })
-
-    // console.log(options)
 
     return (
       <div>
@@ -86,7 +95,11 @@ class AddNote extends React.Component {
             onChange={e => this.updateContent(e.target.value)}
           />
           <label htmlFor='folder'>Select a Folder</label>
-          <select id='folder' name='folder'>
+          <select 
+            id='folder' 
+            name='folder'
+            onChange={e => this.updateFolder(e.target.value)}
+          >
             <option value='none'>Select one...</option>
             {options}
           </select>
