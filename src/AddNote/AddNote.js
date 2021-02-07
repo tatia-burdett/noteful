@@ -58,10 +58,10 @@ class AddNote extends React.Component {
   }
 
   render() {
-    console.log(this.context.folders)
-    // const options = this.context.folder.map(folders => {
-    //   console.log(folders)
-    // })
+    // console.log(this.context.folders)
+    const options = this.context.folders.map((folder, i) => {
+      return <option value={folder.name} key={i}>{folder.name}</option>
+    })
 
     // console.log(options)
 
@@ -88,7 +88,7 @@ class AddNote extends React.Component {
           <label htmlFor='folder'>Select a Folder</label>
           <select id='folder' name='folder'>
             <option value='none'>Select one...</option>
-            {/* {options} */}
+            {options}
           </select>
           <button type='submit'>Add Note</button>
         </form>
@@ -96,5 +96,9 @@ class AddNote extends React.Component {
     )
   }
  }
+
+ AddNote.defaultProps = {
+  folders: []
+}
 
  export default AddNote
