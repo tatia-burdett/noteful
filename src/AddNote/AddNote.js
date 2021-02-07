@@ -1,5 +1,6 @@
 import React from 'react'
 import config from '../config'
+import NotesContext from '../NotesContext'
 
 class AddNote extends React.Component {
   constructor(props) {
@@ -13,6 +14,8 @@ class AddNote extends React.Component {
       }
     }
   }
+
+  static contextType = NotesContext
 
   updateName(name) {
     this.setState({
@@ -55,6 +58,13 @@ class AddNote extends React.Component {
   }
 
   render() {
+    console.log(this.context.folders)
+    // const options = this.context.folder.map(folders => {
+    //   console.log(folders)
+    // })
+
+    // console.log(options)
+
     return (
       <div>
         <form className='add_note_form' onSubmit={e => this.handleSubmit(e)}>
@@ -75,6 +85,11 @@ class AddNote extends React.Component {
             className='add_note'
             onChange={e => this.updateContent(e.target.value)}
           />
+          <label htmlFor='folder'>Select a Folder</label>
+          <select id='folder' name='folder'>
+            <option value='none'>Select one...</option>
+            {/* {options} */}
+          </select>
           <button type='submit'>Add Note</button>
         </form>
       </div>
