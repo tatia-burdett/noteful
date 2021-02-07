@@ -86,6 +86,9 @@ class MainNoteList extends React.Component {
                 </li>
               )}
             </ul>
+            <div className='Main_note_add_link'>
+              <Link to='/add-note'>Add Note +</Link>
+            </div>
           </section>
         )}
       </NotesContext.Consumer>
