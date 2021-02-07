@@ -34,8 +34,24 @@ class AddNote extends React.Component {
     event.preventDefault() 
     const name = this.state.name.value
     const content = this.state.content.value
-    console.log(name)
-    console.log(content)
+    const query = `${name} ${content}`
+
+    const requestOptions = {
+      method: 'POST',
+      headers: { 'Content-Type': 'application/json' },
+      body: JSON.stringify({
+        name: `${query}`
+      })
+    };
+
+    fetch(`${config.API_ENDPOINT}/notes/`, requestOptions)
+      .then(res => res.json())
+      .then(data => {
+        console.log('Success: ', data)
+      })
+      .catch(error => {
+        console.log('Error: ', error)
+      })
   }
 
   render() {
