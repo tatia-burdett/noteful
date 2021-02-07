@@ -57,7 +57,7 @@ class AddNote extends React.Component {
       body: JSON.stringify({
         name: `${name}`,
         content: `${content}`,
-        folder: `${folder}`
+        folderId: `${folder}`
       })
     };
 
