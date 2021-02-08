@@ -10,9 +10,6 @@ class FolderList extends React.Component {
   static contextType = NotesContext
 
   render() {
-    // const countNotesForFolder = (notes=[], folderId) =>
-    //   notes.filter(note => note.folderId === folderId).length
-
     const { folders=[], notes=[] } = this.context
     
     return (
