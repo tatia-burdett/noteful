@@ -49,7 +49,6 @@ class AddNote extends React.Component {
     const name = this.state.name.value
     const content = this.state.content.value
     const folder = this.state.folder.value
-    // const query = `${name} ${content} ${folder}`
 
     const requestOptions = {
       method: 'POST',
