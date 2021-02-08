@@ -32,13 +32,18 @@ class AddFolder extends React.Component {
   };
 
     fetch(`${config.API_ENDPOINT}/folders/`, requestOptions)
-      .then(res => res.json())
-      .then(data => {
-        console.log('Success: ', data)
-      })
-      .catch(error => {
-        console.log('Error: ', error)
-      })
+    .then(res => {
+      if (!res.ok) {
+        throw new Error('Something went wrong! Try again later.')
+      }
+      return res.json()
+    })
+    .then(data => {
+      console.log('Success: ', data)
+    })
+    .catch(error => {
+      console.log('Error: ', error)
+    })
   }
 
   render() {
