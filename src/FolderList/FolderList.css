@@ -26,3 +26,15 @@
   font-weight: 400;
   color: darkslategrey;
 }
+
+.Folder_list_add_link a {
+  font-size: 16px;
+  font-weight: 600;
+  text-decoration: none;
+  color: black;
+}
+
+.Folder_list_add_link a:hover {
+  text-decoration: underline;
+  color: gray;
+}
