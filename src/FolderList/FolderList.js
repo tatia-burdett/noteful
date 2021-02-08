@@ -2,7 +2,6 @@ import React from 'react'
 import { NavLink, Link } from 'react-router-dom'
 import NotesContext from '../NotesContext'
 import { countNotesForFolder } from '../helperFunction'
-import AddFolder from '../AddFolder/AddFolder'
 
 import './FolderList.css'
 
