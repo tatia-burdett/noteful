@@ -54,17 +54,15 @@ class App extends React.Component {
   renderFolderRoutes() {
     return (
       <>
-        <FolderError>
-          {['/', '/folder/:folderId'].map(path => (
-            <Route
-              exact
-              key={path}
-              path={path}
-              component={FolderList}
-            />
-          ))}
-          <Route path='/note/:noteId' component={FolderNote} />
-        </FolderError>
+        {['/', '/folder/:folderId'].map(path => (
+          <Route
+            exact
+            key={path}
+            path={path}
+            component={FolderList}
+          />
+        ))}
+        <Route path='/note/:noteId' component={FolderNote}/>
       </>
     )
   }
@@ -72,19 +70,17 @@ class App extends React.Component {
   renderNoteRoutes() {
     return (
       <>
-        <NotesError>
-          {['/', '/folder/:folderId'].map(path => (
-            <Route 
-              exact
-              key={path}
-              path={path}
-              component={MainNoteList}
-            />
-          ))}
-          <Route path='/note/:noteId' component={MainNote}/>
-          <Route path='/add-note' component={AddNote}/>
-          <Route path='/add-folder' component={AddFolder}/>
-        </NotesError>
+        {['/', '/folder/:folderId'].map(path => (
+          <Route 
+            exact
+            key={path}
+            path={path}
+            component={MainNoteList}
+          />
+        ))}
+        <Route path='/note/:noteId' component={MainNote}/>
+        <Route path='/add-note' component={AddNote}/>
+        <Route path='/add-folder' component={AddFolder}/>
       </>
     )
   }
