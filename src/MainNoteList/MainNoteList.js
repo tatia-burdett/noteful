@@ -6,26 +6,6 @@ import { getFolderNotes } from '../helperFunction'
 import config from '../config'
 import './MainNoteList.css'
 
-// function deleteNoteRequest(noteId, cb) {
-//   fetch(config.API_ENDPOINT + `/${noteId}`, {
-//     method: 'DELETE',
-//   })
-//   .then(res => {
-//     if(!res.ok) {
-//       return res.json().then(error => {
-//         throw error
-//       })
-//     }
-//     return res.json()
-//   })
-//   .then(data => {
-//     cb(noteId)
-//   })
-//   .catch(error => {
-//     console.log(error)
-//   })
-// }
-
 class MainNoteList extends React.Component {
   static defaultProps = {
     match: {
@@ -74,7 +54,6 @@ class MainNoteList extends React.Component {
                   </Link>
                   <div className='Main_list_del'>
                     <button onClick={() => {
-                      // console.log(context)
                       this.deleteNoteRequest(
                         note.id,
                         context.deleteNote

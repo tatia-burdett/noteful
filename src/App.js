@@ -6,6 +6,7 @@ import MainNote from './MainNote/MainNote' // Main section, single note selected
 import FolderNote from './FolderNote/FolderNote' // Folder section when single note selected
 import AddFolder from './AddFolder/AddFolder' // Add Folder Form Page
 import AddNote from './AddNote/AddNote' //Add Note Form Page
+import NotesError from './NotesError/NotesError'
 import NotesContext from './NotesContext'
 import config from './config'
 import './App.css'

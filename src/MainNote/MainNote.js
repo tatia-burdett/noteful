@@ -26,11 +26,6 @@ class MainNote extends React.Component {
           <Moment format='D MMM YYYY'>{note.modified}</Moment>
           <p>{note.content}</p>
         </div>
-        <div className='Main_note_del'>
-          <button>
-            Delete
-          </button>
-        </div>
       </section>
     )
   }
