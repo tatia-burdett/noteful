@@ -1,0 +1,30 @@
+.Add_folder {
+  border: 1px solid black;
+  width: 350px;
+  margin-top: 20px;
+  padding: 10px;
+}
+
+.add_folder_form {
+  display: flex;
+  flex-direction: column;
+}
+
+.add_folder_form legend {
+  font-weight: 600;
+  font-size: 28px;
+  padding: 10px;
+}
+
+.add_folder_label {
+  font-weight: 600;
+  padding: 5px;
+}
+
+.add_folder {
+  margin-bottom: 10px;
+}
+
+.add_folder_btn {
+  width: fit-content;
+}

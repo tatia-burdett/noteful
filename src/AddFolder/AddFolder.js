@@ -1,5 +1,6 @@
 import React from 'react'
 import config from '../config'
+import './AddFolder.css'
 
 class AddFolder extends React.Component {
   constructor(props) {
@@ -48,10 +49,10 @@ class AddFolder extends React.Component {
 
   render() {
     return (
-      <div>
+      <div className='Add_folder'>
         <form className='add_folder_form' onSubmit={e => this.handleSubmit(e)}>
           <legend>Create a Folder</legend>
-          <label htmlFor='name'>Name</label>
+          <label htmlFor='name' className='add_folder_label'>Name</label>
           <input 
             type='text'
             name='name'
@@ -59,7 +60,7 @@ class AddFolder extends React.Component {
             className='add_folder'
             onChange={e => this.updateName(e.target.value)}
           />
-          <button type='submit'>Add Folder</button>
+          <button type='submit' className='add_folder_btn'>Add Folder</button>
         </form>
       </div>
     )

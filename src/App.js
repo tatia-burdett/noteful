@@ -64,7 +64,6 @@ class App extends React.Component {
             />
           ))}
           <Route path='/note/:noteId' component={FolderNote} />
-          <Route path='/add-folder' component={AddFolder}/>
         </FolderError>
       </>
     )
@@ -84,6 +83,7 @@ class App extends React.Component {
           ))}
           <Route path='/note/:noteId' component={MainNote}/>
           <Route path='/add-note' component={AddNote}/>
+          <Route path='/add-folder' component={AddFolder}/>
         </NotesError>
       </>
     )
