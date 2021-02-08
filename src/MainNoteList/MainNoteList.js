@@ -38,7 +38,6 @@ class MainNoteList extends React.Component {
   render() {
     const { notes=[] } = this.context
     const { folderId } = this.props.match.params
-    console.log(folderId)
 
     const folderNotes = getFolderNotes(notes, folderId)
 
