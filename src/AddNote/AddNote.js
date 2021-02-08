@@ -1,6 +1,7 @@
 import React from 'react'
 import config from '../config'
 import NotesContext from '../NotesContext'
+import './AddNote.css'
 
 class AddNote extends React.Component {
   constructor(props) {
@@ -81,10 +82,10 @@ class AddNote extends React.Component {
     })
 
     return (
-      <div>
+      <div className='Add_note'>
         <form className='add_note_form' onSubmit={e => this.handleSubmit(e)}>
           <legend>Create a Folder</legend>
-          <label htmlFor='name'>Name</label>
+          <label htmlFor='name' className='add_note_label'>Name:</label>
           <input 
             type='text'
             name='name'
@@ -92,7 +93,7 @@ class AddNote extends React.Component {
             className='add_note'
             onChange={e => this.updateName(e.target.value)}
           />
-          <label htmlFor='content'>Content</label>
+          <label htmlFor='content' className='add_note_label'>Content:</label>
           <textarea 
             type='text'
             name='content'
@@ -100,7 +101,7 @@ class AddNote extends React.Component {
             className='add_note'
             onChange={e => this.updateContent(e.target.value)}
           />
-          <label htmlFor='folder'>Select a Folder</label>
+          <label htmlFor='folder' className='add_note_label'>Select a Folder</label>
           <select 
             id='folder' 
             name='folder'
@@ -109,7 +110,7 @@ class AddNote extends React.Component {
             <option value='none'>Select one...</option>
             {options}
           </select>
-          <button type='submit'>Add Note</button>
+          <button type='submit' className='add_note_btn'>Add Note</button>
         </form>
       </div>
     )

@@ -23,7 +23,7 @@ h1 {
 .App_nav {
   flex: 2;
   text-align: right;
-  background-color: #96A8B0;
+  /* background-color: #96A8B0; */
 }
 
 .App_main {
