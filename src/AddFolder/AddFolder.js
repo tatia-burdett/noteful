@@ -12,6 +12,8 @@ class AddFolder extends React.Component {
     }
   }
 
+  // input onChange()
+
   updateName(name) {
     this.setState({
       name: {
@@ -19,6 +21,12 @@ class AddFolder extends React.Component {
       }
     })
   }
+
+  // Form Validation
+
+  
+
+  // Form Submission, POST request
 
   handleSubmit(event) {
     event.preventDefault()
