@@ -17,10 +17,10 @@
   cursor: pointer;
   color: #999;
 }
-
+/* 
 .Folder_back_btn button:focus {
   outline: none;
-}
+} */
 
 .Folder_note h3 {
   padding-bottom: 10px;

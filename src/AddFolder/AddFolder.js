@@ -66,6 +66,11 @@ class AddFolder extends React.Component {
   render() {
     return (
       <div className='Add_folder'>
+        <div className='Folder_back_btn'>
+          <button onClick={() => this.props.history.goBack()}>
+            Go Back
+          </button>
+        </div>
         <form className='add_folder_form' onSubmit={e => this.handleSubmit(e)}>
           <legend>Create a Folder</legend>
           <label htmlFor='name' className='add_folder_label'>Name</label>

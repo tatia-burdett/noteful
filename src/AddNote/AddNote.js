@@ -113,6 +113,11 @@ class AddNote extends React.Component {
 
     return (
       <div className='Add_note'>
+        <div className='Folder_back_btn'>
+          <button onClick={() => this.props.history.goBack()}>
+            Go Back
+          </button>
+        </div>
         <form className='add_note_form' onSubmit={e => this.handleSubmit(e)}>
           <legend>Create a Note</legend>
           <label htmlFor='name' className='add_note_label'>Name:</label>
