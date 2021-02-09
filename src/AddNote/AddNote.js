@@ -1,6 +1,7 @@
 import React from 'react'
 import config from '../config'
 import NotesContext from '../NotesContext'
+import ValidationError from '../ValidationError/ValidationError'
 import './AddNote.css'
 
 class AddNote extends React.Component {
@@ -20,6 +21,8 @@ class AddNote extends React.Component {
     }
 
   static contextType = NotesContext
+
+  // input onChange() 
 
   updateName(name) {
     this.setState({
@@ -45,6 +48,33 @@ class AddNote extends React.Component {
     })
   }
 
+  // Form Validation
+
+  validateName() {
+    const name = this.state.name.value.trim()
+    if (name.length === 0) {
+      return 'Name is required'
+    } else if (name.length < 3) {
+      return 'Name must be at least 3 characters long'
+    }
+  }
+
+  validateContent() {
+    const content = this.state.content.value.trim()
+    if (content.length === 0) {
+      return 'Content is required'
+    } 
+  }
+
+  validateFolder() {
+    const folder = this.state.folder.value.trim()
+    if (folder === 'none') {
+      return 'Folder is required'
+    }
+  }
+
+  // Form Submission, POST request
+ 
   handleSubmit(event) {
     event.preventDefault() 
     const name = this.state.name.value
@@ -94,6 +124,7 @@ class AddNote extends React.Component {
             onChange={e => this.updateName(e.target.value)}
             required
           />
+          <ValidationError message={this.validateName()}/>
           <label htmlFor='content' className='add_note_label'>Content:</label>
           <textarea 
             type='text'
@@ -103,6 +134,7 @@ class AddNote extends React.Component {
             onChange={e => this.updateContent(e.target.value)}
             required
           />
+          <ValidationError message={this.validateContent()}/>
           <label htmlFor='folder' className='add_note_label'>Select a Folder</label>
           <select 
             id='folder' 
@@ -113,6 +145,7 @@ class AddNote extends React.Component {
             <option value='none'>Select one...</option>
             {options}
           </select>
+          <ValidationError message={this.validateFolder()}/>
           <button type='submit' className='add_note_btn'>Add Note</button>
         </form>
       </div>
