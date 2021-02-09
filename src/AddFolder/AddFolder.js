@@ -1,5 +1,6 @@
 import React from 'react'
 import config from '../config'
+import ValidationError from '../ValidationError/ValidationError'
 import './AddFolder.css'
 
 class AddFolder extends React.Component {
@@ -24,7 +25,14 @@ class AddFolder extends React.Component {
 
   // Form Validation
 
-  
+  validateName() {
+    const name = this.state.name.value.trim()
+    if (name.length === 0) {
+      return 'Name is required'
+    } else if (name.length < 3) {
+      return 'Name must be at least 3 characters long'
+    }
+  }
 
   // Form Submission, POST request
 
@@ -69,6 +77,7 @@ class AddFolder extends React.Component {
             onChange={e => this.updateName(e.target.value)}
             required
           />
+          <ValidationError message={this.validateName()}/>
           <button type='submit' className='add_folder_btn'>Add Folder</button>
         </form>
       </div>
