@@ -59,6 +59,7 @@ class AddFolder extends React.Component {
             id='name'
             className='add_folder'
             onChange={e => this.updateName(e.target.value)}
+            required
           />
           <button type='submit' className='add_folder_btn'>Add Folder</button>
         </form>

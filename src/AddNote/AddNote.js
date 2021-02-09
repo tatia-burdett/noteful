@@ -92,6 +92,7 @@ class AddNote extends React.Component {
             id='name'
             className='add_note'
             onChange={e => this.updateName(e.target.value)}
+            required
           />
           <label htmlFor='content' className='add_note_label'>Content:</label>
           <textarea 
@@ -100,12 +101,14 @@ class AddNote extends React.Component {
             id='content'
             className='add_note'
             onChange={e => this.updateContent(e.target.value)}
+            required
           />
           <label htmlFor='folder' className='add_note_label'>Select a Folder</label>
           <select 
             id='folder' 
             name='folder'
             onChange={e => this.updateFolder(e.target.value)}
+            required
           >
             <option value='none'>Select one...</option>
             {options}
