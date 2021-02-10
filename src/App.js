@@ -1,11 +1,11 @@
-import React from 'react';
-import { Route, Link } from 'react-router-dom'
+import React from 'react'
+import {Route, Link} from 'react-router-dom'
 import MainNoteList from './MainNoteList/MainNoteList' // Main section, list of all notes
 import FolderList from './FolderList/FolderList' // Folder section, list of all folders
 import MainNote from './MainNote/MainNote' // Main section, single note selected
 import FolderNote from './FolderNote/FolderNote' // Folder section when single note selected
 import AddFolder from './AddFolder/AddFolder' // Add Folder Form Page
-import AddNote from './AddNote/AddNote' //Add Note Form Page
+import AddNote from './AddNote/AddNote' // Add Note Form Page
 import NotesError from './NotesError/NotesError'
 import FolderError from './FolderError/FolderError'
 import NotesContext from './NotesContext'
@@ -13,7 +13,7 @@ import config from './config'
 import './App.css'
 
 class App extends React.Component {
-  constructor(props) {
+  constructor (props) {
     super(props)
     this.state = {
       notes: [],
@@ -21,18 +21,18 @@ class App extends React.Component {
     }
   }
 
-  componentDidMount() {
+  componentDidMount () {
     this.fetchAllData()
   }
 
   fetchAllData = () => {
     Promise.all([
-      this.fetchFolders(), 
+      this.fetchFolders(),
       this.fetchNotes()
     ])
       .then(([folders, notes]) => {
         this.setState({
-          folders, 
+          folders,
           notes
         })
       })
@@ -51,7 +51,7 @@ class App extends React.Component {
       .then(res => res.json())
   }
 
-  renderFolderRoutes() {
+  renderFolderRoutes () {
     return (
       <FolderError>
         {['/', '/folder/:folderId'].map(path => (
@@ -67,11 +67,11 @@ class App extends React.Component {
     )
   }
 
-  renderNoteRoutes() {
+  renderNoteRoutes () {
     return (
       <NotesError>
         {['/', '/folder/:folderId'].map(path => (
-          <Route 
+          <Route
             exact
             key={path}
             path={path}
@@ -85,7 +85,7 @@ class App extends React.Component {
     )
   }
 
-  render() {
+  render () {
     const value = {
       notes: this.state.notes,
       folders: this.state.folders,
@@ -107,8 +107,8 @@ class App extends React.Component {
           </div>
         </div>
       </NotesContext.Provider>
-    );
+    )
   }
 }
 
-export default App;
+export default App

@@ -1,7 +1,7 @@
 import React from 'react'
 import Moment from 'react-moment'
 import NotesContext from '../NotesContext'
-import { findNote } from '../helperFunction'
+import {findNote} from '../helperFunction'
 import './MainNote.css'
 
 class MainNote extends React.Component {
@@ -13,9 +13,9 @@ class MainNote extends React.Component {
 
   static contextType = NotesContext
 
-  render() {
-    const { notes=[] } = this.context
-    const { noteId } = this.props.match.params
+  render () {
+    const {notes = []} = this.context
+    const {noteId} = this.props.match.params
 
     const note = findNote(notes, noteId || {content: ''})
 

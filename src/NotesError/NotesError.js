@@ -1,18 +1,18 @@
 import React from 'react'
 
 class NotesError extends React.Component {
-  constructor(props) {
+  constructor (props) {
     super(props)
     this.state = {
       hasError: false
     }
   }
 
-  static getDerivedStateFromError(error) {
-    return { hasError: true }
+  static getDerivedStateFromError () {
+    return {hasError: true}
   }
 
-  render() {
+  render () {
     if (this.state.hasError) {
       return (
         <h2>An error has occursed, could not display notes</h2>

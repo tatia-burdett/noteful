@@ -1,7 +1,7 @@
 import React from 'react'
 import './FolderNote.css'
 import NotesContext from '../NotesContext'
-import { findNote, findFolder } from '../helperFunction'
+import {findNote, findFolder} from '../helperFunction'
 
 class FolderNote extends React.Component {
   static defaultProps = {
@@ -15,14 +15,14 @@ class FolderNote extends React.Component {
 
   static contextType = NotesContext
 
-  render() {
-    const { folders, notes} = this.context
-    const { noteId } = this.props.match.params
+  render () {
+    const {folders, notes} = this.context
+    const {noteId} = this.props.match.params
 
     const note = findNote(notes, noteId) || {}
     const folder = findFolder(folders, note.folderId)
 
-    return ( 
+    return (
       <div className='Folder_note'>
         <div className='Folder_back_btn'>
           <button onClick={() => this.props.history.goBack()}>

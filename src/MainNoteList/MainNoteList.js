@@ -1,8 +1,8 @@
 import React from 'react'
-import { Link } from 'react-router-dom'
+import {Link} from 'react-router-dom'
 import Moment from 'react-moment'
 import NotesContext from '../NotesContext'
-import { getFolderNotes } from '../helperFunction'
+import {getFolderNotes} from '../helperFunction'
 import config from '../config'
 import './MainNoteList.css'
 
@@ -17,36 +17,36 @@ class MainNoteList extends React.Component {
 
   deleteNoteRequest = (noteId) => {
     fetch(`${config.API_ENDPOINT}/notes/${noteId}`, {
-      method: 'DELETE',
+      method: 'DELETE'
     })
-    .then(res => {
-      if(!res.ok) {
-        return res.json().then(error => {
-          throw error
-        })
-      }
-      return res.json()
-    })
-    .then(data => {
-      this.context.fetchNotes()
-    })
-    .catch(error => {
-      console.log(error)
-    })
+      .then(res => {
+        if (!res.ok) {
+          return res.json().then(error => {
+            throw error
+          })
+        }
+        return res.json()
+      })
+      .then(data => {
+        this.context.fetchNotes()
+      })
+      .catch(error => {
+        console.log(error)
+      })
   }
 
-  render() {
-    const { notes=[] } = this.context
-    const { folderId } = this.props.match.params
+  render () {
+    const {notes = []} = this.context
+    const {folderId} = this.props.match.params
 
     const folderNotes = getFolderNotes(notes, folderId)
 
-    return(
+    return (
       <NotesContext.Consumer>
         {(context) => (
           <section className='Main_note_list'>
             <ul>
-              {folderNotes.map(note => 
+              {folderNotes.map(note =>
                 <li key={note.id} className='Main_list_item'>
                   <Link to={`/note/${note.id}`}>
                     <h3>{note.name}</h3>

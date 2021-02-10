@@ -1,10 +1,12 @@
 import React from 'react'
 import config from '../config'
+import NotesContext from '../NotesContext'
 import ValidationError from '../ValidationError/ValidationError'
+import PropTypes from 'prop-types'
 import './AddFolder.css'
 
 class AddFolder extends React.Component {
-  constructor(props) {
+  constructor (props) {
     super(props)
     this.state = {
       name: {
@@ -13,9 +15,11 @@ class AddFolder extends React.Component {
     }
   }
 
+  static contextType = NotesContext
+
   // input onChange()
 
-  updateName(name) {
+  updateName (name) {
     this.setState({
       name: {
         value: name
@@ -25,7 +29,7 @@ class AddFolder extends React.Component {
 
   // Form Validation
 
-  validateName() {
+  validateName () {
     const name = this.state.name.value.trim()
     if (name.length === 0) {
       return 'Name is required'
@@ -36,34 +40,35 @@ class AddFolder extends React.Component {
 
   // Form Submission, POST request
 
-  handleSubmit(event) {
+  handleSubmit (event) {
     event.preventDefault()
     const query = this.state.name.value
 
     const requestOptions = {
       method: 'POST',
-      headers: { 'Content-Type': 'application/json' },
+      headers: {'Content-Type': 'application/json'},
       body: JSON.stringify({
         name: `${query}`
       })
-  };
+    }
 
     fetch(`${config.API_ENDPOINT}/folders/`, requestOptions)
-    .then(res => {
-      if (!res.ok) {
-        throw new Error('Something went wrong! Try again later.')
-      }
-      return res.json()
-    })
-    .then(data => {
-      console.log('Success: ', data)
-    })
-    .catch(error => {
-      console.log('Error: ', error)
-    })
+      .then(res => {
+        if (!res.ok) {
+          throw new Error('Something went wrong! Try again later.')
+        }
+        return res.json()
+      })
+      .then(() => {
+        this.props.history.goBack()
+        this.context.fetchNotes()
+      })
+      .catch(error => {
+        console.log('Error: ', error)
+      })
   }
 
-  render() {
+  render () {
     return (
       <div className='Add_folder'>
         <div className='Folder_back_btn'>
@@ -74,7 +79,7 @@ class AddFolder extends React.Component {
         <form className='add_folder_form' onSubmit={e => this.handleSubmit(e)}>
           <legend>Create a Folder</legend>
           <label htmlFor='name' className='add_folder_label'>Name</label>
-          <input 
+          <input
             type='text'
             name='name'
             id='name'
@@ -82,12 +87,16 @@ class AddFolder extends React.Component {
             onChange={e => this.updateName(e.target.value)}
             required
           />
-          <ValidationError message={this.validateName()}/>
+          <ValidationError message={this.validateName()} />
           <button type='submit' className='add_folder_btn'>Add Folder</button>
         </form>
       </div>
     )
   }
+}
+
+AddFolder.propTypes = {
+  history: PropTypes.object
 }
 
 export default AddFolder

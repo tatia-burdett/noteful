@@ -5,26 +5,26 @@ import ValidationError from '../ValidationError/ValidationError'
 import './AddNote.css'
 
 class AddNote extends React.Component {
-  constructor(props) {
-    super(props) 
-      this.state = {
-        name: {
-          value: ''
-        },
-        content: {
-          value: ''
-        },
-        folder: {
-          value: ''
-        }  
+  constructor (props) {
+    super(props)
+    this.state = {
+      name: {
+        value: ''
+      },
+      content: {
+        value: ''
+      },
+      folder: {
+        value: ''
       }
     }
+  }
 
   static contextType = NotesContext
 
-  // input onChange() 
+  // input onChange()
 
-  updateName(name) {
+  updateName (name) {
     this.setState({
       name: {
         value: name
@@ -32,7 +32,7 @@ class AddNote extends React.Component {
     })
   }
 
-  updateContent(content) {
+  updateContent (content) {
     this.setState({
       content: {
         value: content
@@ -40,7 +40,7 @@ class AddNote extends React.Component {
     })
   }
 
-  updateFolder(folder) {
+  updateFolder (folder) {
     this.setState({
       folder: {
         value: folder
@@ -50,7 +50,7 @@ class AddNote extends React.Component {
 
   // Form Validation
 
-  validateName() {
+  validateName () {
     const name = this.state.name.value.trim()
     if (name.length === 0) {
       return 'Name is required'
@@ -59,14 +59,14 @@ class AddNote extends React.Component {
     }
   }
 
-  validateContent() {
+  validateContent () {
     const content = this.state.content.value.trim()
     if (content.length === 0) {
       return 'Content is required'
-    } 
+    }
   }
 
-  validateFolder() {
+  validateFolder () {
     const folder = this.state.folder.value.trim()
     if (folder === 'none') {
       return 'Folder is required'
@@ -74,22 +74,22 @@ class AddNote extends React.Component {
   }
 
   // Form Submission, POST request
- 
-  handleSubmit(event) {
-    event.preventDefault() 
+
+  handleSubmit (event) {
+    event.preventDefault()
     const name = this.state.name.value
     const content = this.state.content.value
     const folder = this.state.folder.value
 
     const requestOptions = {
       method: 'POST',
-      headers: { 'Content-Type': 'application/json' },
+      headers: {'Content-Type': 'application/json'},
       body: JSON.stringify({
         name: `${name}`,
         content: `${content}`,
         folderId: `${folder}`
       })
-    };
+    }
 
     fetch(`${config.API_ENDPOINT}/notes/`, requestOptions)
       .then(res => {
@@ -107,7 +107,7 @@ class AddNote extends React.Component {
       })
   }
 
-  render() {
+  render () {
     const options = this.context.folders.map((folder, i) => {
       return <option value={folder.id} key={i}>{folder.name}</option>
     })
@@ -122,7 +122,7 @@ class AddNote extends React.Component {
         <form className='add_note_form' onSubmit={e => this.handleSubmit(e)}>
           <legend>Create a Note</legend>
           <label htmlFor='name' className='add_note_label'>Name:</label>
-          <input 
+          <input
             type='text'
             name='name'
             id='name'
@@ -132,7 +132,7 @@ class AddNote extends React.Component {
           />
           <ValidationError message={this.validateName()}/>
           <label htmlFor='content' className='add_note_label'>Content:</label>
-          <textarea 
+          <textarea
             type='text'
             name='content'
             id='content'
@@ -142,8 +142,8 @@ class AddNote extends React.Component {
           />
           <ValidationError message={this.validateContent()}/>
           <label htmlFor='folder' className='add_note_label'>Select a Folder</label>
-          <select 
-            id='folder' 
+          <select
+            id='folder'
             name='folder'
             onChange={e => this.updateFolder(e.target.value)}
             required
@@ -157,10 +157,10 @@ class AddNote extends React.Component {
       </div>
     )
   }
- }
+}
 
- AddNote.defaultProps = {
+AddNote.defaultProps = {
   folders: []
 }
 
- export default AddNote
+export default AddNote
