@@ -1,4 +1,5 @@
 import React from 'react'
+import PropTypes from 'prop-types'
 
 class FolderError extends React.Component {
   constructor (props) {
@@ -20,6 +21,10 @@ class FolderError extends React.Component {
     }
     return this.props.children
   }
+}
+
+FolderError.propTypes = {
+  children: PropTypes.array
 }
 
 export default FolderError

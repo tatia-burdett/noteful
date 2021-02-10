@@ -1,6 +1,7 @@
 import React from 'react'
 import './FolderNote.css'
 import NotesContext from '../NotesContext'
+import PropTypes from 'prop-types'
 import {findNote, findFolder} from '../helperFunction'
 
 class FolderNote extends React.Component {
@@ -35,6 +36,11 @@ class FolderNote extends React.Component {
       </div>
     )
   }
+}
+
+FolderNote.propTypes = {
+  history: PropTypes.object,
+  match: PropTypes.number
 }
 
 export default FolderNote

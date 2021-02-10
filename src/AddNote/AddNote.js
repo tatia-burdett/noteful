@@ -1,6 +1,7 @@
 import React from 'react'
 import config from '../config'
 import NotesContext from '../NotesContext'
+import PropTypes from 'prop-types'
 import ValidationError from '../ValidationError/ValidationError'
 import './AddNote.css'
 
@@ -157,6 +158,10 @@ class AddNote extends React.Component {
       </div>
     )
   }
+}
+
+AddNote.propTypes = {
+  history: PropTypes.object
 }
 
 AddNote.defaultProps = {

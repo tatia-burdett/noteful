@@ -1,4 +1,5 @@
 import React from 'react'
+import PropTypes from 'prop-types'
 
 class NotesError extends React.Component {
   constructor (props) {
@@ -20,6 +21,10 @@ class NotesError extends React.Component {
     }
     return this.props.children
   }
+}
+
+NotesError.propTypes = {
+  children: PropTypes.array
 }
 
 export default NotesError
