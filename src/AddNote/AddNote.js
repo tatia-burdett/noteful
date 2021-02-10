@@ -98,8 +98,9 @@ class AddNote extends React.Component {
         }
         return res.json()
       })
-      .then(data => {
-        console.log('Success: ', data)
+      .then(() => {
+        this.props.history.goBack()
+        this.context.fetchNotes()
       })
       .catch(error => {
         console.log('Error: ', error)
