@@ -92,7 +92,7 @@ class AddNote extends React.Component {
       })
     }
 
-    fetch(`${config.API_ENDPOINT}/notes/`, requestOptions)
+    fetch(`${config.API_ENDPOINT}/note/`, requestOptions)
       .then(res => {
         if (!res.ok) {
           throw new Error('Something went wrong! Try again later.')
