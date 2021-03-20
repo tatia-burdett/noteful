@@ -42,12 +42,12 @@ class App extends React.Component {
   }
 
   fetchFolders = () => {
-    return fetch(`${config.API_ENDPOINT}/folders`)
+    return fetch(`${config.API_ENDPOINT}/folder`)
       .then(res => res.json())
   }
 
   fetchNotes = () => {
-    return fetch(`${config.API_ENDPOINT}/notes`)
+    return fetch(`${config.API_ENDPOINT}/note`)
       .then(res => res.json())
   }
 

@@ -23,7 +23,7 @@ class MainNote extends React.Component {
     return (
       <section className='Main_note'>
         <div>
-          <h3>{note.name}</h3>
+          <h3>{note.note_name}</h3>
           <Moment format='D MMM YYYY'>{note.modified}</Moment>
           <p>{note.content}</p>
         </div>

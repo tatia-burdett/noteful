@@ -48,11 +48,11 @@ class AddFolder extends React.Component {
       method: 'POST',
       headers: {'Content-Type': 'application/json'},
       body: JSON.stringify({
-        name: `${query}`
+        folder_name: `${query}`
       })
     }
 
-    fetch(`${config.API_ENDPOINT}/folders/`, requestOptions)
+    fetch(`${config.API_ENDPOINT}/folder/`, requestOptions)
       .then(res => {
         if (!res.ok) {
           throw new Error('Something went wrong! Try again later.')

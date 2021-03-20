@@ -16,7 +16,7 @@ class MainNoteList extends React.Component {
   static contextType = NotesContext
 
   deleteNoteRequest = (noteId) => {
-    fetch(`${config.API_ENDPOINT}/notes/${noteId}`, {
+    fetch(`${config.API_ENDPOINT}/note/${noteId}`, {
       method: 'DELETE'
     })
       .then(res => {
@@ -49,7 +49,7 @@ class MainNoteList extends React.Component {
               {folderNotes.map(note =>
                 <li key={note.id} className='Main_list_item'>
                   <Link to={`/note/${note.id}`}>
-                    <h3>{note.name}</h3>
+                    <h3>{note.note_name}</h3>
                     <Moment format='D MMM YYYY'>{note.modified}</Moment>
                   </Link>
                   <div className='Main_list_del'>

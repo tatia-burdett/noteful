@@ -86,9 +86,9 @@ class AddNote extends React.Component {
       method: 'POST',
       headers: {'Content-Type': 'application/json'},
       body: JSON.stringify({
-        name: `${name}`,
+        note_name: `${name}`,
         content: `${content}`,
-        folderId: `${folder}`
+        folder_id: `${folder}`
       })
     }
 
@@ -110,7 +110,7 @@ class AddNote extends React.Component {
 
   render () {
     const options = this.context.folders.map((folder, i) => {
-      return <option value={folder.id} key={i}>{folder.name}</option>
+      return <option value={folder.id} key={i}>{folder.folder_name}</option>
     })
 
     return (
