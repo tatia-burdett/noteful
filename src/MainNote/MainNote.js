@@ -17,8 +17,9 @@ class MainNote extends React.Component {
   render () {
     const {notes = []} = this.context
     const {noteId} = this.props.match.params
+    const noteIntId = parseInt(noteId)
 
-    const note = findNote(notes, noteId || {content: ''})
+    const note = findNote(notes, noteIntId || {content: ''})
 
     return (
       <section className='Main_note'>

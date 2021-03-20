@@ -38,8 +38,9 @@ class MainNoteList extends React.Component {
   render () {
     const {notes = []} = this.context
     const {folderId} = this.props.match.params
+    const folderIntId = parseInt(folderId)
 
-    const folderNotes = getFolderNotes(notes, folderId)
+    const folderNotes = getFolderNotes(notes, folderIntId)
 
     return (
       <NotesContext.Consumer>
