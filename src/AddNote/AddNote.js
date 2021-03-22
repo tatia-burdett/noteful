@@ -104,7 +104,7 @@ class AddNote extends React.Component {
         this.context.fetchNotes()
       })
       .catch(error => {
-        console.log('Error: ', error)
+        this.setState({error})
       })
   }
 
