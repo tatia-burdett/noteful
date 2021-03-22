@@ -32,7 +32,7 @@ class MainNoteList extends React.Component {
         this.context.fetchNotes()
       })
       .catch(error => {
-        console.log(error)
+        this.setState({error})
       })
   }
 
