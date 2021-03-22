@@ -4,6 +4,7 @@ import Moment from 'react-moment'
 import NotesContext from '../NotesContext'
 import {getFolderNotes} from '../helperFunction'
 import config from '../config'
+import PropTypes from 'prop-types'
 import './MainNoteList.css'
 
 class MainNoteList extends React.Component {
@@ -74,6 +75,10 @@ class MainNoteList extends React.Component {
       </NotesContext.Consumer>
     )
   }
+}
+
+MainNoteList.propTypes = {
+  match: PropTypes.number
 }
 
 MainNoteList.defaultProps = {
